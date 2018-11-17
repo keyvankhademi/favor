@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block title %}
+    Favor Request
+{% endblock %}
+
+{% block content %}
+    <p> This is add credit page </p>
+    {% if user.is_authenticated %}
+        <p>Your Credit is: {{ user.exchangeuser.credit }}</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Add Credit</button>
+        </form>
+
+    {% else %}
+        <p> Please Log in or Sign up to use this site!</p>
+    {% endif %}
+
+{% endblock %}

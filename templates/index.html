@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block title %}
+    Home Page
+{% endblock %}
+
+{% block content %}
+    <p> This is home page </p>
+    {% if user.is_authenticated %}
+        <p>Your Credit is: {{ user.exchangeuser.credit }}</p>
+        <p><a href="{% url 'favor_request' %}"> Request a Favor </a> </p>
+        <p><a href="{% url 'add_credit' %}"> Add Credit To Your Account </a> </p>
+    {% else %}
+        <p> Please Log in or Sign up to use this site!</p>
+    {% endif %}
+
+{% endblock %}
