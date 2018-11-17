@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Favor.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'favor.settings')
 
 application = get_wsgi_application()
