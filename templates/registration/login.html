@@ -6,14 +6,18 @@
 {% endblock %}
 
 {% block content %}
-<form method="post" action=".">
-  {% csrf_token %}
-  {{ form.as_p }}
-
-  <input type="submit" value="{% trans 'Log in' %}" />
-  <input type="hidden" name="next" value="{% url 'index' %}" />
-</form>
-
-{#<p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>#}
-{#<p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>#}
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="head">
+                    <form method="post" action=".">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button class="btn" type="submit">Log In</button>
+                        <input type="hidden" name="next" value="{% url 'index' %}"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

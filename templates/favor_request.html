@@ -7,16 +7,24 @@
 {% endblock %}
 
 {% block content %}
-    <p> This is favor request page </p>
-    {% if user.is_authenticated %}
-        <p>Your Credit is: {{ user.exchangeuser.credit }}</p>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Send Request</button>
-        </form>
-    {% else %}
-        <p> Please Log in or Sign up to use this site!</p>
-    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="head">
+                    <p> Choose your request and send it </p>
+                    {% if user.is_authenticated %}
+                        <p>Your Credit is: {{ user.exchangeuser.credit }}</p>
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button class="btn" type="submit">Send Request</button>
+                        </form>
+                    {% else %}
+                        <p> Please Log in or Sign up to use this site!</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}

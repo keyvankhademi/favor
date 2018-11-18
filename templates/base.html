@@ -4,33 +4,93 @@
 
 <head>
     <title>{% block title %}User test{% endblock %}</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet"
+          id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
-    <div id="header">
+<div id="header">
     {% block header %}
-    <a href="{% url 'index' %}">{% trans "Home" %}</a> |
 
-    {% if user.is_authenticated %}
-        {% trans "Logged in" %}: {{ user.username }}
-        (<a href="{% url 'auth_logout' %}">{% trans "Log out" %}</a>)
-    {% else %}
-       (<a href="{% url 'auth_login' %}">{% trans "Log in" %}</a>|
-        <a href="{% url 'auth_signup' %}">{% trans "Sign up" %}</a>)
-    {% endif %}
-    <hr />
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div class="head">
+                        <div class="row-fluid">
+                            <div class="span12">
+                                <div class="span6">
+                                    <h1 class="muted">Favor Buddy</h1>
+                                </div>
+                                {% if user.is_authenticated %}
+                                    <div class="span4 offset2" style="margin-top:15px;">
+                                        <button onclick="window.location.href='{% url 'auth_logout' %}'"
+                                                class="btn pull-right" type="button">Log Out
+                                        </button>
+                                    </div>
+                                {% else %}
+                                    <div class="span4 offset2" style="margin-top:15px;">
+                                        <button onclick="window.location.href='{% url 'auth_signup' %}'"
+                                                class="btn pull-right" type="button">Sign Up
+                                        </button>
+                                        <button onclick="window.location.href='{% url 'auth_login' %}'"
+                                                class="btn pull-right" type="button">Sign In
+                                        </button>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="navbar">
+                            <div class="navbar-inner">
+                                <div class="container">
+                                    <ul class="nav">
+                                        {% if user.is_authenticated %}
+                                            <li>
+                                                <a href="{% url 'index' %}">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'add_credit' %}">Add Credit</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'favor_request' %}">Request A Favor</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'auth_logout' %}">Log Out</a>
+                                            </li>
+                                        {% else %}
+                                            <li>
+                                                <a href="{% url 'index' %}">Home</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'auth_login' %}">Log In</a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'auth_signup' %}">Sign Up</a>
+                                            </li>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endblock %}
-    </div>
+</div>
 
-    <div id="content">
+<div id="content">
     {% block content %}{% endblock %}
-    </div>
+</div>
 
-    <div id="footer">
+<div id="footer">
     {% block footer %}
-        <hr />
+
     {% endblock %}
-    </div>
+</div>
 </body>
 
 </html>
